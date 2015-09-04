@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<project name="DMMStatsdClient-1.0" basedir="." default="release" xmlns:ht="happytrails">
+
+    <property name="checkstyle.failOnError" value="false"/>
+
+    <import file="${happytrails.root}/happytrails.xml"/>
+
+    <property name="android.target" value="android-19" />
+    <path id="extra.classpath">
+        <!-- Include android.jar, any add-ons, and annotations.jar -->
+        <fileset dir="${bp:tool.configfarm.android-sdk}/android-sdk"
+                 includes="platforms/${android.target}/android.jar,add-ons/*/libs/*.jar,tools/support/annotations.jar" />
+    </path>
+
+    <!-- Tell javac to compile against android.jar -->
+    <property name="extra.classpath" refid="extra.classpath" />
+    <property name="standard.compile.classpath"
+              value="${bp:build.classpath}${path.separator}${extra.classpath}" />
+    <property name="tests.additional.runtime.classpath" value="${extra.classpath}" />
+
+    <ht:import file="happier-trails.xml"/>
+
+    <!-- Android doesn't support 1.7 features yet. -->
+    <property name="target.java.vm.version" value="1.6" />
+    <property name="source.java.vm.version" value="1.6" />
+
+    <ht:import file="happier-trails.xml"/>
+
+</project>

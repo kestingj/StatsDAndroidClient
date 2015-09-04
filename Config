@@ -1,0 +1,39 @@
+# -*-perl-*-
+
+package.DMMStatsdClient = {
+    interfaces = (1.0);
+    deploy = {
+        generic = true;
+    };
+
+    dependencies = {
+        1.0 = {
+        };
+    };
+
+    test-dependencies = {
+        1.0 = {
+            junit = 4;
+            AssertJ = 1.x;
+        };
+    };
+
+    build-environment = {
+        chroot = basic;
+        network-access = blocked;
+    };
+
+    build-system = happytrails;
+
+    build-tools = {
+        1.0 = {
+            JDK = 1.7;
+            HappierTrails = 3.2;
+            AndroidSDKPlatform = 19;
+        };
+    };
+
+    targets = {
+        DMMStatsdClient-1.0 = { type = javalibrary; };
+    };
+};
